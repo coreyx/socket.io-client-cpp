@@ -4,10 +4,10 @@ Add-Type -assembly "system.io.compression.filesystem"
 
 Write-Host "Downloading boost.." 
 # URL to download boost 1.59 shortened with bit.ly
-(new-object net.webclient).DownloadFile("http://bit.ly/1pk71MX", "C:\Projects\Boost_Src\boost_1_55_0.zip") 
+(new-object net.webclient).DownloadFile("http://bit.ly/1pk71MX", "C:\Boost_Src\boost_1_55_0.zip") 
 Write-Host "Extracting archive.." 
-[io.compression.zipfile]::ExtractToDirectory("C:\Projects\Boost_Src\boost_1_55_0.zip", "C:\Projects\Boost_Src\") 
-Set-Location "C:\Projects\\boost_1_55_0" 
+[io.compression.zipfile]::ExtractToDirectory("C:\Boost_Src\boost_1_55_0.zip", "C:\Boost_Src\") 
+Set-Location "C:\Boost_Src\boost_1_55_0" 
 Write-Host "Building boost.." 
 & ".\bootstrap.bat" 
 # Boost build command from original file:
