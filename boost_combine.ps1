@@ -1,7 +1,6 @@
 
 $boost_dir = "C:\Boost"
-$lib_dir = "lib"
-$boost_lib_dir = $boost_dir + '\' + $lib_dir
+$boost_lib_dir = $boost_dir + "\lib"
 $release_dir = $boost_lib_dir + '\' + "release"
 $debug_dir = $boost_lib_dir + '\' + "debug"
 
