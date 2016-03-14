@@ -1,3 +1,4 @@
+# Powershell script that downloads and installs Boost
 # Derived from http://help.appveyor.com/discussions/questions/455-boost-lib-depency
 # and https://github.com/helios-labs-shared/socket.io-client-cpp/blob/master/INSTALL.md#boost_setup
 Add-Type -assembly "system.io.compression.filesystem"
@@ -18,7 +19,8 @@ Write-Host "Extracting archive.."
 Set-Location $boost_src
 Write-Host "Building boost.." 
 & ".\bootstrap.bat" 
-# Boost build command from original file:
+# Boost build command from original script found on AppVeyor support:
 # & .\b2 address-model=64 toolset=msvc-14.0 windows-api=desktop variant=debug link=static threading=multi runtime-link=shared --with-log
-# Command from https://github.com/helios-labs-shared/socket.io-client-cpp/blob/master/INSTALL.md#boost_setup
+# Command taken from https://github.com/helios-labs-shared/socket.io-client-cpp/blob/master/INSTALL.md#boost_setup
+# Modified to build 64-bit (debug & release) and to use the Visual Studio 12.0 compiler
 & .\bjam install --prefix=$boost_dir --with-system --with-date_time --with-random link=static runtime-link=shared threading=multi address-model=64 --toolset=msvc-12.0 debug release
