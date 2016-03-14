@@ -16,3 +16,4 @@ script:
   - cmake -D CMAKE_CXX_FLAGS=-std=c++11 .
   - make
   - make install
+# adding comment to trigger first build
