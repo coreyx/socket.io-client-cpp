@@ -24,4 +24,4 @@ Write-Host "Building boost.."
 # & .\b2 address-model=64 toolset=msvc-14.0 windows-api=desktop variant=debug link=static threading=multi runtime-link=shared --with-log
 # Command taken from https://github.com/helios-labs-shared/socket.io-client-cpp/blob/master/INSTALL.md#boost_setup
 # Modified to build 64-bit (debug & release) and to use the Visual Studio 12.0 compiler
-& .\bjam install --prefix=$boost_dir --with-system --with-date_time --with-random link=static runtime-link=shared threading=multi address-model=64 --toolset=msvc-12.0 debug release
+& bjam install --prefix=$boost_dir --with-system --with-date_time --with-random link=static runtime-link=shared threading=multi address-model=64 --toolset=msvc-12.0 debug release
