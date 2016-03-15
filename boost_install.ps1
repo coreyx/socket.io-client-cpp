@@ -3,7 +3,8 @@
 # and https://github.com/helios-labs-shared/socket.io-client-cpp/blob/master/INSTALL.md#boost_setup
 Add-Type -assembly "system.io.compression.filesystem"
 
-# URL to download boost 1.59 shortened with bit.ly
+# URL to download Boost shortened with bit.ly
+# https://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.zip/download
 $download_url = "http://bit.ly/1pk71MX"
 $boost_version = "boost_1_55_0"
 $filename = $boost_version + ".zip"
