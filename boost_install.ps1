@@ -9,7 +9,7 @@ $download_url = "http://bit.ly/1pk71MX"
 $boost_version = "boost_1_55_0"
 $filename = $boost_version + ".zip"
 $boost_src_dir = "C:\Boost_Src\"
-$boost_zip_path = $boost_src_dr + $filename
+$boost_zip_path = $boost_src_dir + $filename
 $boost_src = $boost_src_dir + $boost_version
 $boost_dir = "C:\Boost"
 
