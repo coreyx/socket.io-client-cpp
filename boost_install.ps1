@@ -35,3 +35,6 @@ pushd $boost_src
 & .\bjam install --prefix=$boost_dir --with-system --with-date_time --with-random link=static runtime-link=shared threading=multi address-model=64 --toolset=msvc-12.0 debug release
 
 popd
+
+# Debugging directory location
+get-location
