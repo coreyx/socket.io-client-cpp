@@ -22,11 +22,12 @@ Write-Host "Downloading boost.."
 Write-Host "Extracting archive.." 
 [io.compression.zipfile]::ExtractToDirectory($boost_zip_path, $boost_src_dir) 
 
-Set-Location $boost_src
+pushd $boost_src
+# Set-Location $boost_src
 Write-Host "Building boost.." 
 & ".\bootstrap.bat" 
 
-pushd $boost_src
+# pushd $boost_src
 
 # Boost install command from original script found on AppVeyor support:
 # & .\b2 address-model=64 toolset=msvc-14.0 windows-api=desktop variant=debug link=static threading=multi runtime-link=shared --with-log
