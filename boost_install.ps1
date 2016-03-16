@@ -13,14 +13,20 @@ $boost_zip_path = $boost_src_dir + $filename
 $boost_src = $boost_src_dir + $boost_version
 $boost_dir = "C:\Boost"
 
+# md $boost_src_dir
+New-Item -Force -ItemType directory -Path $boost_src_dir
+
 Write-Host "Downloading boost.." 
 (new-object net.webclient).DownloadFile($download_url, $boost_zip_path) 
+
 Write-Host "Extracting archive.." 
 [io.compression.zipfile]::ExtractToDirectory($boost_zip_path, $boost_src_dir) 
+
 Set-Location $boost_src
 Write-Host "Building boost.." 
 & ".\bootstrap.bat" 
-# Boost build command from original script found on AppVeyor support:
+
+# Boost install command from original script found on AppVeyor support:
 # & .\b2 address-model=64 toolset=msvc-14.0 windows-api=desktop variant=debug link=static threading=multi runtime-link=shared --with-log
 # Command taken from https://github.com/helios-labs-shared/socket.io-client-cpp/blob/master/INSTALL.md#boost_setup
 # Modified to build 64-bit (debug & release) and to use the Visual Studio 12.0 compiler
