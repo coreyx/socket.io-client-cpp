@@ -36,18 +36,18 @@ write-host "`nVisual Studio Command Prompt variables set." -ForegroundColor Yell
 # Set-Location $boost_lib_dir
 pushd $boost_lib_dir
 
-# md $release_dir
-New-Item -Force -ItemType directory -Path $boost_debug_dir
 # md $boost_debug_dir
+New-Item -Force -ItemType directory -Path $boost_debug_dir
+# md $boost_release_dir
 New-Item -Force -ItemType directory -Path $boost_release_dir
 
 & lib.exe /OUT:debug\boost.lib *mt-gd-1_*.lib
 & lib.exe /OUT:release\boost.lib *mt-1_*.lib
 
-# md $debug_output_path
-New-Item -Force -ItemType directory -Path $debug_output_path
-# md $release_output_path
-New-Item -Force -ItemType directory -Path $release_output_path
+# md $boost_debug_output_path
+New-Item -Force -ItemType directory -Path $boost_debug_output_path
+# md $boost_release_output_path
+New-Item -Force -ItemType directory -Path $boost_release_output_path
 
 Copy-Item -Path $boost_debug_path -Destination $boost_debug_output_path
 Copy-Item -Path $boost_release_path -Destination $boost_release_output_path
