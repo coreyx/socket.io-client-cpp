@@ -44,5 +44,5 @@ popd
 $debug_output_path = $env.APPVEYOR_BUILD_FOLDER + "\release\boost.lib"
 $release_output_path = $env.APPVEYOR_BUILD_FOLDER + "\debug\boost.lib"
 
-Copy-Item -Path .\debug\boost.lib -Destination $debug_output_path
-Copy-Item -Path .\release\boost.lib -Destination $release_output_path
+Copy-Item -Path C:\Boost\debug\boost.lib -Destination $debug_output_path
+Copy-Item -Path C:\Boost\release\boost.lib -Destination $release_output_path
