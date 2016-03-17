@@ -39,7 +39,10 @@ New-Item -Force -ItemType directory -Path $release_dir
 & lib.exe /OUT:debug\boost.lib *mt-gd-1_*.lib
 & lib.exe /OUT:release\boost.lib *mt-1_*.lib
 
-Copy-Item -Path debug\boost.lib -Destination $env.APPVEYOR_BUILD_FOLDER\boost.lib
-Copy-Item -Path release\boost.lib -Destination $env.APPVEYOR_BUILD_FOLDER\boost.lib
+$debug_output_path = $env.APPVEYOR_BUILD_FOLDER + "\release\boost.lib"
+$release_output_path = $env.APPVEYOR_BUILD_FOLDER + "\debug\boost.lib"
+
+Copy-Item -Path debug\boost.lib -Destination $debug_output_path
+Copy-Item -Path release\boost.lib -Destination $release_output_path
 
 popd
