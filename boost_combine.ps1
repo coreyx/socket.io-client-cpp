@@ -22,15 +22,16 @@ $boost_release_output_path = $boost_release_output_dir + '\' + $boost_lib_filena
 
 #Set environment variables for Visual Studio Command Prompt
 # From http://evandontje.com/2013/06/06/emulate-the-visual-studio-command-prompt-in-powershell/
-pushd 'C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC'
-cmd /c "vcvarsall.bat&set" |
+# http://stackoverflow.com/questions/2124753/how-i-can-use-powershell-with-the-visual-studio-command-prompt
+pushd 'c:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools'
+cmd /c "vsvars32.bat&set" |
 foreach {
   if ($_ -match "=") {
     $v = $_.split("="); set-item -force -path "ENV:\$($v[0])"  -value "$($v[1])"
   }
 }
 popd
-write-host "`nVisual Studio Command Prompt variables set." -ForegroundColor Yellow
+write-host "`nVisual Studio 2015 Command Prompt variables set." -ForegroundColor Yellow
 
 # Debug path
 # echo ($env:Path).Replace(';',"`n")
