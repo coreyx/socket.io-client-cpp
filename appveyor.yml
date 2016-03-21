@@ -4,5 +4,43 @@
 #   - All section names are case-sensitive.
 #   - Section names should be unique on each level.
 
-# Add Visual Studio 2015 to image.
+version: 1.6.{build}
+skip_non_tags: true
 image: Visual Studio 2015
+configuration:
+- Debug
+- Release
+platform: x64
+clone_folder: C:\Projects\socket.io-client-cpp
+init:
+- ps: 
+install:
+- ps: >-
+    git submodule -q update --init --recursive
+
+    .\boost_install.ps1
+before_build:
+- ps: "Write-Host \"Before build\" \nget-location\n.\\cmake_generate.ps1"
+build:
+  project: sioclient.sln
+  verbosity: minimal
+before_package:
+- ps: .\boost_combine.ps1
+after_build:
+- cmd: >-
+    7z a socket.io-client-cpp_v%APPVEYOR_BUILD_VERSION%_%configuration%_%platform%.zip %APPVEYOR_BUILD_FOLDER%\%configuration%\*.lib
+
+    md include
+
+    copy src\*.h include\
+
+    7z a socket.io-client-cpp_v%APPVEYOR_BUILD_VERSION%_%configuration%_%platform%.zip include\*.h
+artifacts:
+- path: socket.io-client-cpp_v$(APPVEYOR_BUILD_VERSION)_$(configuration)_$(platform).zip
+  name: socket.io-client-cpp_v$(APPVEYOR_BUILD_VERSION)_$(configuration)_$(platform)
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: TV+E10p4woJTLAtZFq5OohbLUDGH0hyADsn8oZn8OHf93LAAV2YWq65rWSaQ2zaq
+  artifact: socket.io-client-cpp_v$(APPVEYOR_BUILD_VERSION)_$(configuration)_$(platform)
+  draft: true
