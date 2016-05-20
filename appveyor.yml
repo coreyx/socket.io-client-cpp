@@ -41,6 +41,6 @@ artifacts:
 deploy:
 - provider: GitHub
   auth_token:
-    secure: TV+E10p4woJTLAtZFq5OohbLUDGH0hyADsn8oZn8OHf93LAAV2YWq65rWSaQ2zaq
+    secure: BDtXHQiv9hVR0rxgObg75ViwK6eByRAfIn/36ayBWiHP1LECP38XBRCGnur9LvvZ
   artifact: socket.io-client-cpp_v$(APPVEYOR_BUILD_VERSION)_$(configuration)_$(platform)
   draft: true
